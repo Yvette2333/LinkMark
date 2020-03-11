@@ -1,20 +1,16 @@
 import React, { useState, useEffect, Fragment, FC } from 'react'
+import { Header } from './styles';
 
 interface GlobalHeaderProps {
-   props: any
 }
 
 const GlobalHeader: FC<GlobalHeaderProps> = (props) => {
 
-  const [state, setState] = useState<any>();
-
-  useEffect(() => {
-    setState('Hello Function Component')
-  }, [])
-
   return (
     <Fragment>
-      {state}
+      <Header>
+        <img src={require("@/assets/images/logo.png")} />
+      </Header>
     </Fragment>
   )
 }
