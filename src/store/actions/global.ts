@@ -1,0 +1,3 @@
+export const MOCKLOGIN = 'GLOBAL/MOCKLOGIN'
+export const SHOWMESSAGE = 'GLOBAL/SHOWMESSAGE'
+
