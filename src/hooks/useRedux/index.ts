@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AllReducerState } from '../../interfaces/store';
 
-const useRedux = (ReducerKeys: any[]) => {
+const useRedux = (ReducerKeys: any[] = ["Global"]) => {
 
   const Dispatch = useDispatch<any>();
   const StoreState = useRef<any>();

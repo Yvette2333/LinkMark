@@ -1,32 +1,50 @@
-import React, { useState, useEffect, Fragment, FC } from 'react';
+import React, { Fragment, FC } from 'react';
 import GlobalHeader from '@/components/GlobalHeader';
 import SideBar from '@/components/SideBar';
 import Content from '@/styles/components/Content';
 import CopyRight from '@/styles/components/CopyRight';
 import Menu from '@/configs/menu.config';
-import { Link, Route, Switch } from 'react-router-dom';
-import {ContentLayoutProps} from '@/interfaces/views';
+import { Route, Switch } from 'react-router-dom';
+import { ContentLayoutProps } from '@/interfaces/views';
+import { MenuItem } from '@/interfaces/menu';
+import Loadable from '@/utils/lodable';
 
-const ContentLayout: FC<ContentLayoutProps> = (props) => {
+function RenderRouter(list: MenuItem[]): any {
+  return list.map((item: MenuItem) => {
+    let { routes, ...currentItem } = item;
+    return routes ?
+      RenderRouter([currentItem, ...routes] as MenuItem[])
+      : <Route
+        exact
+        path={item.path}
+        key={item.path}
+        component={Loadable(item.component)}
+      />
+  })
+}
 
-  const { location: { pathname} } = props;
-  console.log(pathname)
+const ContentLayout: FC<ContentLayoutProps> = () => {
+
+  let MenuList:MenuItem[] = Menu[0].routes as MenuItem[];
+
+  let item = RenderRouter(MenuList);
+  console.log(item)
   const layout = (<Content>
-    Right Content
-    <Link to={{pathname:"/workBench/preview1"}}>/preview</Link>
     <Switch>
-      <Route exact path="/workBench/preview" render={()=><div>....preview</div>}> </Route>
-      <Route exact path="/workBench/preview1" render={()=><div>....111</div>}> </Route>
+      {RenderRouter(MenuList)}
     </Switch>
     <CopyRight> 版权所有 © https://github.com/Yvette2333 </CopyRight>
   </Content>)
 
   return (
+    // <DocumentTitle title="Link Mark">
     <Fragment>
       <GlobalHeader />
-      <SideBar menu={Menu}/>
+      <SideBar menu={MenuList} />
       {layout}
     </Fragment>
+    // </DocumentTitle>
+
   )
 }
 export default React.memo(ContentLayout)

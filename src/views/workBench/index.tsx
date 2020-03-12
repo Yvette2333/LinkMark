@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment, FC } from 'react';
+import React, { Fragment, FC } from 'react';
 import GlobalHeader from '@/components/GlobalHeader';
 import SideBar from '@/components/SideBar';
 import Content from '@/styles/components/Content';

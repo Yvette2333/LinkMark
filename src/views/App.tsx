@@ -2,6 +2,8 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { HashRouter, Switch, Route, Redirect, RouteComponentProps } from "react-router-dom";
 import { MenuItem } from 'interfaces/menu';
+import { ConfigProvider } from 'antd';
+import zhCN from 'antd/es/locale/zh_CN';
 import ContentLayout from '@/layouts/ContentLayout';
 import Loadable from '@/utils/lodable';
 import Menu from '@/configs/menu.config';
@@ -22,21 +24,23 @@ function RenderRouter(list: MenuItem[]): any {
   })
 }
 
-function App() {
+function App(props:any) {
+  console.log(props)
   return (
-    <Provider store={RootStore}>
-      <HashRouter>
-        <Switch>
-          <Redirect exact path="/" to="login" />
-          {/* <Route path="/workBench" component={(props:any)=> {
-            console.log('////',props)
-            return <ContentLayout {...props}/>
-          }}/> */}
-          {RenderRouter(Menu)}
-          <Route component={(props: RouteComponentProps) => <NoFoundPage {...props} />} />
-        </Switch>
-      </HashRouter>
-    </Provider>
+    <ConfigProvider locale={zhCN}>
+      <Provider store={RootStore}>
+        <HashRouter>
+          <Switch>
+            <Redirect exact path="/" to="login" />
+            <Route path="/workBench" key="/workBench" component={(props:RouteComponentProps)=> {
+              return <ContentLayout {...props}/>
+            }}/>
+            {RenderRouter(Menu)}
+            <Route component={(props: RouteComponentProps) => <NoFoundPage {...props} />} />
+          </Switch>
+        </HashRouter>
+      </Provider>
+    </ConfigProvider>
   );
 }
 

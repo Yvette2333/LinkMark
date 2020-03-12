@@ -1,12 +1,12 @@
 /* TODO: Theme主题色配置 + 展开 */
-import React, { useRef, useState, useEffect, Fragment, FC } from 'react'
+import React, { useRef, useState, FC } from 'react'
 import { Menu, Button, Row } from 'antd';
 import { MenuItem } from '../../interfaces/menu';
 import { Link } from 'react-router-dom';
 import {
   PieChartOutlined,
-  DesktopOutlined,
-  InboxOutlined
+  MenuUnfoldOutlined,
+  MenuFoldOutlined
 } from '@ant-design/icons';
 interface SideBarProps {
   menu: MenuItem[]
@@ -20,14 +20,14 @@ const SideBar: FC<SideBarProps> = (props) => {
 
   return (
     <div className="pull-left" style={{ width: collapsed? 85: 225 }}>
-      {/* <Row>
+      <Row>
         <Button 
           style={{width:"100%"}}
           type="default" 
           onClick={() => toggleCollapsed(!collapsed)}>
           {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
         </Button>
-      </Row> */}
+      </Row>
 
       <Menu
         style={{height:'100vh'}}

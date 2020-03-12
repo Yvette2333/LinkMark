@@ -1,5 +1,4 @@
 import { MenuItem } from 'interfaces/menu';
-import Loadable from '@/utils/lodable';
 
 const Menu: MenuItem[] = [
   {
