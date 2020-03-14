@@ -1,5 +1,11 @@
 import { notification } from 'antd';
-import { InitFetch, codeMessage,ResponseInterceptors, RequestInterceptors, METHODS } from '@/configs/requst.config';
+import { InitFetch, codeMessage, ResponseInterceptors, RequestInterceptors, METHODS } from '@/configs/requst.config';
+
+
+/**
+@class Request
+@constructor
+ */
 
 class Request {
   initOptions: RequestInit;
@@ -15,8 +21,10 @@ class Request {
   initResponseInterceptors: Function[] | undefined;
   RequestInterceptors: Function[];
   ResponseInterceptors: Function[];
-  method: any;
-  
+  method: {
+    [functionName: string]: Function;
+  } | undefined;
+
   constructor(
     initOptions: RequestInit = InitFetch,
     initRequestInterceptors: Function[] = [RequestInterceptors],
@@ -36,13 +44,19 @@ class Request {
     }
     // 请求语法糖： Request.method.get Request.method.post ……
     METHODS.forEach((method: string) => {
-      this.method[method] = (url: string, options: RequestInit) => this.sendFetch(url, { ...options, method });
+      if ( this.method ) {
+        this.method[method] = (url: string, options: RequestInit) => this.sendFetch(url, { ...options, method });
+      }
     })
   }
 
+  /**
+   * @description 错误处理
+  * @param res fetch返回未经过处理的Response信息
+  */
   errorHandler = (res: Response) => {
-    const { statusText, url, status} = res;
-    if (status !== 200){
+    const { statusText, url, status } = res;
+    if (status !== 200) {
       notification.error({
         message: `请求错误 ${status}: ${url}`,
         description: codeMessage[status] || statusText,
@@ -57,23 +71,23 @@ class Request {
       throw new Error('url MUST be a string');
     }
     // 执行request前的拦截器，更改options
-    options = this.runInterceptors(this.RequestInterceptors,options)
+    options = this.runInterceptors(this.RequestInterceptors, options)
 
     return fetch(url, options)
       .then(this.errorHandler)
       .then(res => res.json())
       .then(res => {
         //ResponseInterceptors是拦截响应结果的拦截处理函数集合 执行后的函数
-        res = this.runInterceptors(this.ResponseInterceptors,res)
+        res = this.runInterceptors(this.ResponseInterceptors, res)
         //将拦截器处理后的响应结果resolve出去
         Promise.resolve(res)
       })
       .catch(error => console.log(error))
   }
 
-  runInterceptors = (fnList:Function[],res:any)=> {
+  runInterceptors = (fnList: Function[], res: any) => {
     let result = res;
-    fnList.forEach( async (interceptors:any) => {
+    fnList.forEach(async (interceptors: any) => {
       if (typeof interceptors !== 'function') {
         throw new TypeError('Interceptor must be function!');
       }
@@ -85,6 +99,6 @@ class Request {
   }
 
 }
+let res:any = new Request();
 
-
-export default new Request()
+export default res

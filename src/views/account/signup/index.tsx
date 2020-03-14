@@ -1,14 +1,28 @@
 import React, { FC } from 'react'
-import { Form, Input, Row, Col, Checkbox, Button } from 'antd'
+import { Form, Input, Row, Col, Checkbox, Button, message } from 'antd';
 import { Link } from 'react-router-dom'
 import { SignUpProps } from '@/interfaces/views'
 import { SignUpWrapper } from './styles'
 const FormItem = Form.Item;
 
 const SignUp: FC<SignUpProps> = (props) => {
+
+  const [form] = Form.useForm();
+  /**
+   * fetch captcha 
+   * @param 
+   */
+  const sendCaptcha = () => {
+    let isValid = form.isFieldValidating('email');
+    if (!isValid) return message.warn('请输入正确邮箱地址！')
+    let email = form.getFieldValue('email');
+    console.log(email)
+    // 发出koa对应发送邮件的请求
+  }
+
   return (
     <SignUpWrapper formWidth="960px">
-        <Form>
+        <Form form={form}>
           <h3>
             <img src={require('@/assets/images/linkmarkLogo.png')} alt="linkmarkLogo.png"/>
           </h3>
@@ -61,7 +75,7 @@ const SignUp: FC<SignUpProps> = (props) => {
                     </Form.Item>
                   </Col>
                   <Col span={6}>
-                    <Button>发送验证码</Button>
+                    <Button onClick={sendCaptcha}>发送验证码</Button>
                   </Col>
                 </Row>
               </Form.Item>

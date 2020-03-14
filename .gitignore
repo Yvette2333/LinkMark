@@ -10,6 +10,7 @@
 
 # production
 /build
+/server
 
 # misc
 .DS_Store
@@ -24,3 +25,4 @@ yarn-error.log*
 
 *.back.*
 /src/test
+/docs
