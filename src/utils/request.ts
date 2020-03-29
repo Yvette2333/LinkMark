@@ -21,9 +21,7 @@ class Request {
   initResponseInterceptors: Function[] | undefined;
   RequestInterceptors: Function[];
   ResponseInterceptors: Function[];
-  method: {
-    [functionName: string]: Function;
-  } | undefined;
+  method: void;
 
   constructor(
     initOptions: RequestInit = InitFetch,
@@ -42,13 +40,25 @@ class Request {
         use: (fn: Function) => this.ResponseInterceptors.push(fn),
       }
     }
-    // 请求语法糖： Request.method.get Request.method.post ……
-    METHODS.forEach((method: string) => {
-      if ( this.method ) {
-        this.method[method] = (url: string, options: RequestInit) => this.sendFetch(url, { ...options, method });
-      }
-    })
+    
+    this.method = this.initMethod();
+
   }
+
+  initMethod = () => {
+     // 请求语法糖： Request.method.get Request.method.post ……
+    var Method:any = {};
+    var _this = this;
+    for ( var i = 0, method; method = METHODS[ i++ ]; ){
+      (function( method ){
+        Method[ method ] = (url: string, options: RequestInit) => _this.sendFetch(url, { ...options, method });
+      })( method )
+    };
+    return Method
+  }
+
+  post = (url: string, options: RequestInit) => this.sendFetch(url, { ...this.initOptions, ...options, method: 'POST' });
+
 
   /**
    * @description 错误处理
@@ -61,12 +71,13 @@ class Request {
         message: `请求错误 ${status}: ${url}`,
         description: codeMessage[status] || statusText,
       });
+      // will be catch by fetch.catch()
       throw res;
     }
     return res
   }
 
-  sendFetch = (url: string, options: RequestInit) => {
+  sendFetch = (url: string, options: RequestInit):any => {
     if (typeof url !== 'string') {
       throw new Error('url MUST be a string');
     }
@@ -74,31 +85,35 @@ class Request {
     options = this.runInterceptors(this.RequestInterceptors, options)
 
     return fetch(url, options)
-      .then(this.errorHandler)
+      // TODO: 体验不太好。强提示
+      // .then(this.errorHandler) 
       .then(res => res.json())
       .then(res => {
         //ResponseInterceptors是拦截响应结果的拦截处理函数集合 执行后的函数
         res = this.runInterceptors(this.ResponseInterceptors, res)
-        //将拦截器处理后的响应结果resolve出去
+        //将拦截器处理后的响应结果resolve出去(决议)
         Promise.resolve(res)
+        return res
       })
       .catch(error => console.log(error))
   }
 
+
+  // 执行拦截器中的函数
   runInterceptors = (fnList: Function[], res: any) => {
     let result = res;
     fnList.forEach(async (interceptors: any) => {
       if (typeof interceptors !== 'function') {
         throw new TypeError('Interceptor must be function!');
       }
+      // 其中函数会按照执行的顺序放入执行栈，并通过result 来记录/更改当前函数的执行上下文
       let interceptorsRes = await interceptors(res);
       result = !interceptorsRes ? result : interceptorsRes;
     })
-    console.log(result)
     return result
   }
 
 }
-let res:any = new Request();
+let res: any = new Request();
 
 export default res
