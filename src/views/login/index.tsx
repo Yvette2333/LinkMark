@@ -25,49 +25,47 @@ const Login: FC<LoginProps> = (props) => {
     props.history.push('/workBench')
   }
   const onFinishFailed = (errorInfo: any) => {
-    console.log('???',errorInfo)
+    console.log('???', errorInfo)
   }
-
-  console.log(Global)
 
   return (
     <LoginWrapper>
-        <Form
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}>
-          <Row>
-            <LOGO src={require('@/assets/images/logo.png')} />
-          </Row>
-          <FormItem
-            name="username"
-            rules={[{ required: true, message: '请输入邮箱/手机号' }]}
-          >
-            <Input />
+      <Form
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}>
+        <Row>
+          <LOGO src={require('@/assets/images/logo.png')} />
+        </Row>
+        <FormItem
+          name="username"
+          rules={[{ required: true, message: '请输入邮箱/手机号' }]}
+        >
+          <Input />
+        </FormItem>
+        <FormItem
+          name="password"
+          rules={[
+            { required: true, min: 6, message: '请输入至少6位数密码!' },
+          ]}
+        >
+          <Input.Password />
+        </FormItem>
+        <FormItem>
+          <FormItem name="remember" valuePropName="checked" className="pull-left">
+            <Checkbox>记住账号密码</Checkbox>
           </FormItem>
-          <FormItem
-            name="password"
-            rules={[
-              { required: true, min:6, message: '请输入至少6位数密码!' },
-            ]}
-          >
-            <Input.Password />
-          </FormItem>
-          <FormItem>
-            <FormItem name="remember" valuePropName="checked" className="pull-left">
-              <Checkbox>记住账号密码</Checkbox>
-            </FormItem>
-            <Link to={{pathname:"/signup"}}>
-                注册账号
+          <Link to={{ pathname: "/signup" }}>
+            注册账号
               </Link>
-          </FormItem>
-          <FormItem>
-            <Button type="primary" htmlType="submit">
-              登 录
+        </FormItem>
+        <FormItem>
+          <Button type="primary" htmlType="submit">
+            登 录
             </Button>
-          </FormItem>
-        </Form>
-      </LoginWrapper>
+        </FormItem>
+      </Form>
+    </LoginWrapper>
   )
 }
 export default React.memo(Login)

@@ -25,7 +25,6 @@ function RenderRouter(list: MenuItem[]): any {
 }
 
 function App(props:any) {
-  console.log(props)
   return (
     <ConfigProvider locale={zhCN}>
       <Provider store={RootStore}>

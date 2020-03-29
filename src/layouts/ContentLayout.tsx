@@ -28,7 +28,6 @@ const ContentLayout: FC<ContentLayoutProps> = () => {
   let MenuList:MenuItem[] = Menu[0].routes as MenuItem[];
 
   let item = RenderRouter(MenuList);
-  console.log(item)
   const layout = (<Content>
     <Switch>
       {RenderRouter(MenuList)}

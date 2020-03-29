@@ -42,7 +42,7 @@ const MyCollection: FC<MyCollectionProps> = (props) => {
   }
 
   const queryList = useCallback(() => {
-    fetch("http://192.168.1.9:8088/linkmark/queryBookMark", {
+    fetch("http://192.168.1.9:8088/collection/queryBookMark", {
       method: "POST",
       headers: new Headers({
         'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ const MyCollection: FC<MyCollectionProps> = (props) => {
       body: JSON.stringify({}),
     }).then((res) => res.json()).then((data) => {
       if (data.code === 200) {
-        setDT(data.data)
+        setDT(data.result)
       }
     }).catch((err) => {
       console.log(err)
@@ -66,7 +66,7 @@ const MyCollection: FC<MyCollectionProps> = (props) => {
   }, [])
 
   useEffect(() => {
-    // queryList()
+    queryList()
   }, [queryList])
 
   const sagaQuery = () => {

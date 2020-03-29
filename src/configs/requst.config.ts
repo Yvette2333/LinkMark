@@ -28,12 +28,12 @@ export const codeMessage: ICodeMessage = {
 
 // 内置拦截器
 export const ResponseInterceptors = (res: any) => {
-  console.log('ResponseInterceptors', res)
   if (res.code === 200) {
+    message.success(res.msg)
     return res
   } else {
     message.warn(res.msg);
-    Promise.reject(res); // 不阻塞，轻提示
+    // Promise.reject(res); // 不阻塞，轻提示
   }
 }
 

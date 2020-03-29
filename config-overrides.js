@@ -11,7 +11,6 @@ const {
 const path = require("path");
 // const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-console.log('......')
 module.exports = override(
   // enable legacy decorators babel plugin
   addDecoratorsLegacy(),

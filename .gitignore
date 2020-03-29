@@ -26,3 +26,6 @@ yarn-error.log*
 *.back.*
 /src/test
 /docs
+src/views/login/generator.js
+src/apis/_local.ts
+src/apis/_local.ts
