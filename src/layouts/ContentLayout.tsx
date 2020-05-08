@@ -1,6 +1,7 @@
 import React, { Fragment, FC } from 'react';
 import GlobalHeader from '@/components/GlobalHeader';
 import SideBar from '@/components/SideBar';
+import ProtalBox from '@/components/ProtalBox';
 import Content from '@/styles/components/Content';
 import CopyRight from '@/styles/components/CopyRight';
 import Menu from '@/configs/menu.config';
@@ -36,14 +37,12 @@ const ContentLayout: FC<ContentLayoutProps> = () => {
   </Content>)
 
   return (
-    // <DocumentTitle title="Link Mark">
     <Fragment>
       <GlobalHeader />
       <SideBar menu={MenuList} />
       {layout}
+      {/* <ProtalBox></ProtalBox> */}
     </Fragment>
-    // </DocumentTitle>
-
   )
 }
 export default React.memo(ContentLayout)

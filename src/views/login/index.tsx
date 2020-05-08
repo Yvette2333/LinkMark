@@ -7,23 +7,26 @@ import { Row, Button, Input, Form, Checkbox } from 'antd';
 import { LoginWrapper, LOGO } from './styles';
 const FormItem = Form.Item;
 
-
 const Login: FC<LoginProps> = (props) => {
 
-  const { StoreState } = useRedux(["Global", "Login"])
-  const { Global } = StoreState;
+  const { Dispatch } = useRedux(["Global", "Login"])
 
   /**TODO: click Debounce */
   const onFinish = (values: any) => {
+    props.history.push('/workBench')
+
     // Dispatch({
-    //   type: "Request",
-    //   payload:{...values},
+    //   type: "GLOBAL/SIGNIN",
+    //   payload:JSON.stringify({...values}),
     //   callback:(resData:any) => {
     //     console.log(resData)
+    //     if (resData.code === 200) {
+    //       // props.history.push('/workBench')
+    //     }
     //   }
     // })
-    props.history.push('/workBench')
   }
+
   const onFinishFailed = (errorInfo: any) => {
     console.log('???', errorInfo)
   }
@@ -57,7 +60,7 @@ const Login: FC<LoginProps> = (props) => {
           </FormItem>
           <Link to={{ pathname: "/signup" }}>
             注册账号
-              </Link>
+          </Link>
         </FormItem>
         <FormItem>
           <Button type="primary" htmlType="submit">

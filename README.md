@@ -1,39 +1,14 @@
 
-# Client
-# React React-Router React-Router-DOM ✅
-# Immutable Redux Redux-immutable React-Redux React-saga  ✅ 
-  ## 要求实现 ： 1.通过saga启动任务取消任务，执行异步代码/请求 
-# styled-components antd
-# @loadable/component ✅
-# Ts ✅
-# GGeditor 富文本编辑器
-# 安全防范 
-  xss js-xss 白名单与黑名单
- 
+# Link Mark Client 
+一个用于管理Chorme书签的线上管理工具，目前正在开发中，后期拟支持多端应用（APP/Election）
 
-# server
-# nodemon 动态加载 ✅
-# es6 语法支持 @ babel-polyfill @babel-register  预设@babel/preset-env ✅
-# mongodb 数据库 ✅
-# koa
-    "koa-body": "^4.1.0",
-    "koa-bodyparser": "^4.2.1",
-    "koa-router": "^7.4.0",
-    "koa-session": "^5.10.1",
-    "koa-static": "^5.0.0",
-    "koa-views": "^6.2.0",
-# 安全防范
-  csrf  
-    set-Cookies :  ... , same-site 
-    referer
+# 技术栈
 
-
-
-# 登录
-邮箱/用户名
-# 注册
-邮箱，邮箱验证码 / 密码
-# 第三方登录注册
-github / QQ / 微信 / 扫码API
-
-# 用户中心 
+ - 基础：React React-Router React-Router-DOM TypeScript
+ - 数据存储:Immutable Redux Redux-immutable React-Redux React-saga 
+    - 拟实现 ： 1.通过saga启动任务取消任务，执行异步代码/请求 
+- UI库：styled-components antd
+- 必做优化：
+  - @loadable/component
+  - GGeditor 富文本编辑器
+  - 安全防范：防止xss攻击，使用js-xss，并建立白名单与黑名单

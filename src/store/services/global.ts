@@ -19,5 +19,8 @@ export const GlobalServices = {
   signUp:async (payload: any) => (await Request.post(Login.signUp,{
     body:payload
   })),
+  signIn:async (payload: any) => (await Request.post(Login.signIn,{
+    body:payload
+  })),
   
 }

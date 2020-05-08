@@ -7,10 +7,25 @@ const Menu: MenuItem[] = [
     component: () => import('@/views/workBench'),
     routes: [
       {
+        path: "/workBench/recent",
+        title: "最近7天",
+        component: () => import('@/views/recent')
+      },
+      {
+        path: "/workBench/daily",
+        title: "日历",
+        component: () => import('@/views/daily')
+      },
+      {
         path: "/workBench/myCollection",
         title: "我的收藏",
         component: () => import('@/views/workBench/myCollection')
-      }
+      },
+      {
+        path: "/workBench/recycleBin",
+        title: "回收站",
+        component: () => import('@/views/recycleBin')
+      },
     ]
   }, 
   {

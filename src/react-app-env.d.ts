@@ -12,7 +12,7 @@ declare namespace NodeJS {
 }
 
 declare module '@loadable/component'
-
+declare module 'reqwest'
 declare module '*.bmp' {
   const src: string;
   export default src;

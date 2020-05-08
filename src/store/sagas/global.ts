@@ -1,6 +1,6 @@
 import { take, call, fork } from 'redux-saga/effects'
 import { GlobalServices } from '@/store/services/global';
-import { VERIFYCODE, SIGNUP } from '../actions/global';
+import { VERIFYCODE, SIGNUP, SIGNIN } from '../actions/global';
 
 // 对发出对请求进行控制？ takeEvery，,错误处理
 export function* request() {
@@ -31,10 +31,20 @@ export function* signUp() {
     typeof callback === "function" && callback(response)
   }
 }
+export function* signIn() {
+  while(true) {
+    const res = yield take(SIGNIN);
+    const { callback, ...actions } = res;
+    let response = yield call(() => GlobalServices.signIn(actions.payload));
+    console.log("sagas",response)
+    typeof callback === "function" && callback(response)
+  }
+}
 
 
 export default [
   fork(request),
   fork(verifyCode),
   fork(signUp),
+  fork(signIn),
 ]

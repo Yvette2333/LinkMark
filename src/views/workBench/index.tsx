@@ -14,11 +14,11 @@ const WorkBench: FC<WorkBenchProps> = (props) => {
 
   return (
     <Fragment>
-      <GlobalHeader />
-      <SideBar menu={MenuList}/>
-      <Content>
+      {/* <GlobalHeader />
+      <SideBar menu={MenuList}/> */}
+      <Content MenuWidth={100}>
         <MyCollection></MyCollection>
-        <CopyRight> 版权所有 © https://github.com/Yvette2333 </CopyRight>
+        {/* <CopyRight> 版权所有 © https://github.com/Yvette2333 </CopyRight> */}
       </Content>
     </Fragment>
   )

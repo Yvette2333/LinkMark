@@ -29,3 +29,4 @@ yarn-error.log*
 src/views/login/generator.js
 src/apis/_local.ts
 src/apis/_local.ts
+src/apis/_local.ts

@@ -98,6 +98,7 @@ const SignUp: FC<SignUpProps> = () => {
    */
 
   const onFinish = (values: any) => {
+    
     console.log('Success:', values);
     Dispatch({
       type: "GLOBAL/SIGNUP",
