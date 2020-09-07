@@ -1,0 +1,19 @@
+.toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+.toast-content {
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 8px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.toast-warn {
+    background-color: rgba(255, 85, 0,0.5);
+}
+
+.toast-success {
+    background-color: rgba(9, 148, 116,0.3);
+}
