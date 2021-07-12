@@ -18,6 +18,7 @@ const WorkBench: FC<WorkBenchProps> = (props) => {
       <SideBar menu={MenuList}/> */}
       <Content MenuWidth={100}>
         <MyCollection></MyCollection>
+        12312321312
         {/* <CopyRight> 版权所有 © https://github.com/Yvette2333 </CopyRight> */}
       </Content>
     </Fragment>

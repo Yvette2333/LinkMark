@@ -32,7 +32,7 @@ const SideBar: FC<SideBarProps> = (props) => {
       </Row> */}
 
       <Menu
-        defaultSelectedKeys={['1']}
+        defaultSelectedKeys={[Menulist.current[0].path]}
         mode="inline"
         inlineCollapsed={collapsed}
       >
@@ -43,7 +43,7 @@ const SideBar: FC<SideBarProps> = (props) => {
           </Menu.Item>)
         }
       </Menu>
-      <Tabs defaultActiveKey="1" >
+      {/* <Tabs defaultActiveKey="1" >
         <TabPane tab="收藏集" key="1">
           <Row>
             <Col span={24}>
@@ -69,7 +69,7 @@ const SideBar: FC<SideBarProps> = (props) => {
             </Col>
           </Row>
         </TabPane>    
-      </Tabs>
+      </Tabs> */}
     </div>
   )
 }

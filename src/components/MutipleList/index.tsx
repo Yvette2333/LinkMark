@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, Avatar, Button, Skeleton, Card } from 'antd';
 import reqwest from 'reqwest';
-
+import MultipleItem from './MultipleItem';
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 
@@ -30,6 +30,7 @@ class MutipleList extends React.Component {
       method: 'get',
       contentType: 'application/json',
       success: (res: any) => {
+        console.log('list res', res)
         callback(res);
       },
     });
@@ -105,11 +106,11 @@ class MutipleList extends React.Component {
           // </List.Item>
           <List.Item>
 
-            <Card title={item.title}>
+            <MultipleItem title={item.title} key={'123'}>
               <Skeleton title={false} loading={item.loading} active >
                 Card content
               </Skeleton>
-            </Card>
+            </MultipleItem>
           </List.Item>
         )}
       />

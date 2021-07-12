@@ -1,6 +1,6 @@
-import React, { FC } from 'react'
+import React from 'react'
 import ReactDom, { createPortal } from 'react-dom'
-import PortalProps from './index'
+import PortalProps from './index';
 import './index.css'
 
 const ToastPortal:any = ({ el, msg, className }: any) => {
