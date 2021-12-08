@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    List, Avatar, Button, Skeleton, Card
+    List, Skeleton, Card
 } from 'antd';
 import reqwest from 'reqwest';
 
@@ -64,19 +64,19 @@ class MutipleList extends React.Component {
   };
 
   render() {
-      const { initLoading, loading, list } = this.state;
-      const loadMore = !initLoading && !loading ? (
-          <div
-              style={{
-                  textAlign: 'center',
-                  marginTop: 12,
-                  height: 32,
-                  lineHeight: '32px'
-              }}
-          >
-              <Button onClick={this.onLoadMore}>loading more</Button>
-          </div>
-      ) : null;
+      const { initLoading, list } = this.state;
+      // const loadMore = !initLoading && !loading ? (
+      //     <div
+      //         style={{
+      //             textAlign: 'center',
+      //             marginTop: 12,
+      //             height: 32,
+      //             lineHeight: '32px'
+      //         }}
+      //     >
+      //         <Button onClick={this.onLoadMore}>loading more</Button>
+      //     </div>
+      // ) : null;
 
       return (
           <List

@@ -1,1 +1,1 @@
-export const TEST = "LOGIN/TEST"
+export const TEST = "LOGIN/TEST";

@@ -1,21 +1,23 @@
-import React, { useState, useEffect, Fragment, FC } from 'react'
+import React, {
+    useState, useEffect, Fragment, FC
+} from 'react';
 
 interface SecurityLayoutProps {
-   props: any
+   props: any;
 }
 
-const SecurityLayout: FC<SecurityLayoutProps> = (props) => {
+const SecurityLayout: FC<SecurityLayoutProps> = () => {
+    const [state, setState] = useState<any>();
 
-  const [state, setState] = useState<any>();
+    useEffect(() => {
+        setState('Hello Function Component');
+    }, []);
 
-  useEffect(() => {
-    setState('Hello Function Component')
-  }, [])
+    return (
+        <Fragment>
+            {state}
+        </Fragment>
+    );
+};
 
-  return (
-    <Fragment>
-      {state}
-    </Fragment>
-  )
-}
-export default React.memo(SecurityLayout)
+export default React.memo(SecurityLayout);

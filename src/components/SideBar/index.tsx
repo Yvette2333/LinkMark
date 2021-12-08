@@ -20,7 +20,7 @@ const { TabPane } = Tabs;
 const SideBar: FC<SideBarProps> = ({
     menu
 }) => {
-    const [collapsed, toggleCollapsed] = useState<boolean>(false);
+    const [collapsed] = useState<boolean>(false);
     const Menulist = useRef<any>(menu);
     Menulist.current = menu;
 

@@ -12,5 +12,3 @@
   - @loadable/component
   - GGeditor 富文本编辑器
   - 安全防范：防止xss攻击，使用js-xss，并建立白名单与黑名单
-
-  test

@@ -10,8 +10,9 @@ interface RecentProps {
 const Recent: FC<RecentProps> = () => {
     return (
         <Fragment>
-            <ToolBar></ToolBar>
-            <MutipleList/>
+            最近七天
+            {/* <ToolBar></ToolBar> */}
+            {/* <MutipleList/> */}
         </Fragment>
     );
 };

@@ -46,7 +46,7 @@ class Request {
       this.method = this.initMethod();
   }
 
-  initMethod = () => {
+  initMethod = (): any => {
       // 请求语法糖： Request.method.get Request.method.post ……
       const Method: any = {};
       const _this = this;
@@ -87,9 +87,9 @@ class Request {
           throw new Error('url MUST be a string');
       }
       // 执行request前的拦截器，更改options
-      options = this.runInterceptors(this.RequestInterceptors, options);
+      const newOptions = this.runInterceptors(this.RequestInterceptors, options);
 
-      return fetch(url, options)
+      return fetch(url, newOptions)
       // TODO: 体验不太好。强提示
       // .then(this.errorHandler)
           .then(res => res.json())

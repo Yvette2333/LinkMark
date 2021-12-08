@@ -1,26 +1,26 @@
-import { InitGlobalState } from '@/interfaces/store'
+import { InitGlobalState } from '@/interfaces/store';
 import * as GLOBAL from '../actions/global';
 
 const initState: InitGlobalState = {
-  isSuccess: null,
-  errMessage:null,
-}
+    isSuccess: null,
+    errMessage: null
+};
 
-const GlobalStore = (state = initState, actions: any) => {
+const GlobalStore = (state = initState, actions: any): InitGlobalState => {
+    const { payload } = actions;
 
-  const { payload } = actions;
-  switch (actions.type) {
+    switch (actions.type) {
     case GLOBAL.MOCKLOGIN: {
-      // 实际上不对state做任何处理 
-      return { ...state, ...payload }
+        // 实际上不对state做任何处理
+        return { ...state, ...payload };
     }
     case GLOBAL.SHOWMESSAGE: {
-      // 处理错误信息
-      return { ...state, ...payload }
+        // 处理错误信息
+        return { ...state, ...payload };
     }
     default:
-      return { ...state }
-  }
+        return { ...state };
+    }
+};
 
-}
-export default GlobalStore
+export default GlobalStore;

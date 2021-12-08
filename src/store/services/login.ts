@@ -1,11 +1,9 @@
 interface LoginResponce {
-  isLogin:boolean
+  isLogin: boolean;
 }
 
-export function login (context: any) {
-
-  return {
-    isLogin:true
-  }
-   
+export function login(): LoginResponce {
+    return {
+        isLogin: true
+    };
 }

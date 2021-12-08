@@ -14,7 +14,7 @@ const WorkBench: FC<WorkBenchProps> = () => {
     return (
         <Fragment>
             <GlobalHeader />
-      <SideBar menu={MenuList}/>
+            <SideBar menu={MenuList}/>
             <Content MenuWidth={100}>
                 <MyCollection></MyCollection>
                 <CopyRight> 版权所有 © https://github.com/Yvette2333 </CopyRight>

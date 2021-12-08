@@ -1,28 +1,15 @@
-/*
- * @Author: yuwei 回收站
- * @Date: 2020-03-03 21:32:29 
- * @Last Modified by: yuwei
- * @Last Modified time: 2020-04-29 10:34:46
- */
-
-import React, { useState, useEffect, Fragment, FC } from 'react'
-
+// 回收站
+import React, { Fragment, FC } from 'react';
 interface RecycleBinProps {
-   props: any
+   props: any;
 }
 
-const RecycleBin: FC<RecycleBinProps> = (props) => {
+const RecycleBin: FC<RecycleBinProps> = () => {
+    return (
+        <Fragment>
+          Hello Function Component 回收站
+        </Fragment>
+    );
+};
 
-  const [state, setState] = useState<any>();
-
-  useEffect(() => {
-    setState('Hello Function Component 回收站')
-  }, [])
-
-  return (
-    <Fragment>
-      {state}
-    </Fragment>
-  )
-}
-export default React.memo(RecycleBin)
+export default React.memo(RecycleBin);
