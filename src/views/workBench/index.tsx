@@ -9,18 +9,18 @@ import { MenuItem } from '@/interfaces/menu';
 interface WorkBenchProps {
 }
 
-let MenuList:MenuItem[] = Menu[0].routes as MenuItem[];
-const WorkBench: FC<WorkBenchProps> = (props) => {
+const MenuList: MenuItem[] = Menu[0].routes as MenuItem[];
+const WorkBench: FC<WorkBenchProps> = () => {
+    return (
+        <Fragment>
+            <GlobalHeader />
+      <SideBar menu={MenuList}/>
+            <Content MenuWidth={100}>
+                <MyCollection></MyCollection>
+                <CopyRight> 版权所有 © https://github.com/Yvette2333 </CopyRight>
+            </Content>
+        </Fragment>
+    );
+};
 
-  return (
-    <Fragment>
-      {/* <GlobalHeader />
-      <SideBar menu={MenuList}/> */}
-      <Content MenuWidth={100}>
-        <MyCollection></MyCollection>
-        {/* <CopyRight> 版权所有 © https://github.com/Yvette2333 </CopyRight> */}
-      </Content>
-    </Fragment>
-  )
-}
-export default React.memo(WorkBench)
+export default React.memo(WorkBench);

@@ -1,21 +1,23 @@
-import React, { useState, useEffect, Fragment, FC } from 'react'
+import React, {
+    useState, useEffect, Fragment, FC
+} from 'react';
 
 interface SettingProps {
-   props: any
+   props: any;
 }
 
-const Setting: FC<SettingProps> = (props) => {
+const Setting: FC<SettingProps> = () => {
+    const [state, setState] = useState<string>('1');
 
-  const [state, setState] = useState<any>();
+    useEffect(() => {
+        setState('Hello Function Component');
+    }, []);
 
-  useEffect(() => {
-    setState('Hello Function Component')
-  }, [])
+    return (
+        <Fragment>
+            {state}
+        </Fragment>
+    );
+};
 
-  return (
-    <Fragment>
-      {state}
-    </Fragment>
-  )
-}
-export default React.memo(Setting)
+export default React.memo(Setting);

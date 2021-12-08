@@ -1,11 +1,15 @@
 import { RouteComponentProps } from 'react-router-dom';
 
-interface BaseFunctionComponent extends RouteComponentProps{}
+type BaseFunctionComponent = RouteComponentProps;
 
-export interface ContentLayoutProps extends RouteComponentProps{}
+export type ContentLayoutProps = RouteComponentProps;
 
-export interface LoginProps extends BaseFunctionComponent{}
+export interface LoginProps extends BaseFunctionComponent {
+  // history: {
+  //   push: (pathname) => void;
+  // };
+}
 
-export interface SignUpProps extends BaseFunctionComponent{}
+export type SignUpProps = BaseFunctionComponent;
 
 export interface MyCollectionProps{}

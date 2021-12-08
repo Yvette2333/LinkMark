@@ -1,5 +1,5 @@
 import { message } from 'antd';
-import { ICodeMessage } from '@/interfaces/utils';
+import { CodeMessage } from '@/interfaces/utils';
 
 export const InitFetch = {
   method: "POST",
@@ -8,7 +8,7 @@ export const InitFetch = {
   }),
 }
 
-export const codeMessage: ICodeMessage = {
+export const codeMessage: CodeMessage = {
   200: '服务器成功返回请求的数据。',
   201: '新建或修改数据成功。',
   202: '一个请求已经进入后台排队（异步任务）。',

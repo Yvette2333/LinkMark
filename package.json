@@ -2,7 +2,7 @@
   "name": "init",
   "version": "0.1.0",
   "dependencies": {
-    "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.10.5",
     "@babel/polyfill": "^7.8.3",
     "@babel/preset-env": "^7.8.6",
     "@babel/register": "^7.8.6",
@@ -69,6 +69,11 @@
   },
   "devDependencies": {
     "@types/react-document-title": "^2.0.3",
-    "@types/react-redux": "^7.1.7"
+    "@types/react-redux": "^7.1.7",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0"
   }
 }

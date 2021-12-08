@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Themes from '@/styles/theme';
 
-
 export const Header = styled.div`
   position: sticky;
   top: 0px;
@@ -12,5 +11,4 @@ export const Header = styled.div`
   img {
     height: 34px;
   }
-`
-
+`;

@@ -1,20 +1,19 @@
 /** 最近7天 */
-import React, { Fragment, FC } from 'react'
+import React, { Fragment, FC } from 'react';
 import ToolBar from '@/components/ToolBar';
 import MutipleList from '@/components/MutipleList';
 
 interface RecentProps {
-   props: any
+   props: any;
 }
 
-const Recent: FC<RecentProps> = (props) => {
+const Recent: FC<RecentProps> = () => {
+    return (
+        <Fragment>
+            <ToolBar></ToolBar>
+            <MutipleList/>
+        </Fragment>
+    );
+};
 
-  return (
-    <Fragment>
-      <ToolBar></ToolBar>
-      <MutipleList/>
-
-    </Fragment>
-  )
-}
-export default React.memo(Recent)
+export default React.memo(Recent);

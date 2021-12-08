@@ -1,22 +1,24 @@
-/**日历 */
-import React, { useState, useEffect, Fragment, FC } from 'react'
+/** 日历 */
+import React, {
+    useState, useEffect, FC
+} from 'react';
 
 interface DailyProps {
-   props: any
+   props: any;
 }
 
-const Daily: FC<DailyProps> = (props) => {
+const Daily: FC<DailyProps> = () => {
+    const [state, setState] = useState<any>();
 
-  const [state, setState] = useState<any>();
+    useEffect(() => {
+        setState('Hello Function Component 日历～ ');
+    }, []);
 
-  useEffect(() => {
-    setState('Hello Function Component 日历～ ')
-  }, [])
+    return (
+        <div>
+            {state}
+        </div>
+    );
+};
 
-  return (
-    <Fragment>
-      {state}
-    </Fragment>
-  )
-}
-export default React.memo(Daily)
+export default React.memo(Daily);
